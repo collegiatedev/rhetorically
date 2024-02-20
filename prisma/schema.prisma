@@ -17,4 +17,3 @@ model Example {
     updatedAt DateTime @updatedAt
 }
 
-
