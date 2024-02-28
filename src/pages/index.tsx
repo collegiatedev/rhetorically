@@ -24,6 +24,11 @@ export default function Home() {
           {!user.isSignedIn && <SignInButton />}
           {!!user.isSignedIn && <SignOutButton />}
         </div>
+        <div>
+          {data?.map((essay) => (
+            <div key={essay.id}>{essay.content}</div>
+          ))}
+        </div>
       </main>
     </>
   );
