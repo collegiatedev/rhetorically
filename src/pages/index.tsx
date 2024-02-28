@@ -1,10 +1,16 @@
 import Head from "next/head";
 import Link from "next/link";
 import { api } from "~/utils/api";
-import { UserButton } from "@clerk/nextjs";
+import {
+  SignInButton,
+  SignOutButton,
+  UserButton,
+  useUser,
+} from "@clerk/nextjs";
 
 export default function Home() {
   const { data } = api.essays.getAll.useQuery();
+  const user = useUser();
 
   return (
     <>
@@ -14,17 +20,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-        <header>
-          <UserButton />
-        </header>
-        <div className="text-lg">
-          Learn more about Create T3 App, the libraries it uses, and how to
-          deploy it.
-        </div>
         <div>
-          {data?.map((essay) => (
-            <div key={essay.id}>{essay.content}</div>
-          ))}
+          {!user.isSignedIn && <SignInButton />}
+          {!!user.isSignedIn && <SignOutButton />}
         </div>
       </main>
     </>
