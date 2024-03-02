@@ -1,25 +1,9 @@
 import Head from "next/head";
-import Link from "next/link";
 import { api } from "~/utils/api";
-import {
-  SignInButton,
-  SignOutButton,
-  UserButton,
-  useUser,
-} from "@clerk/nextjs";
+import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
+import Image from "next/image";
 
-import React, { useState } from "react";
-
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "~/components/ui/table";
-import { Button, buttonVariants } from "~/components/ui/button";
+import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 
 import {
@@ -30,14 +14,9 @@ import {
   SelectValue,
 } from "~/components/ui/select";
 
-import { Slider } from "~/components/ui/slider";
-
 export default function Home() {
   const { data } = api.essays.getAll.useQuery();
   const user = useUser();
-
-  console.log(user);
-
   return (
     <>
       <Head>
@@ -50,21 +29,24 @@ export default function Home() {
       </Head>
       <nav className="bg-gray-800 p-4">
         <div className="container mx-auto flex items-center justify-between">
-          <a href="https://www.collegiate-consulting.com/">
-            <img
+          <a
+            href="https://www.collegiate-consulting.com/"
+            rel="noopener noreferrer"
+          >
+            <Image
               src="/horizontal-white.svg"
               alt="Brand Logo"
               className="h-8 w-auto"
             />
           </a>
           <div className="flex flex-grow items-center justify-center space-x-4 text-white">
-            <a href="/home" className="hover:text-gray-300">
+            <a href="#" className="hover:text-gray-300">
               Home
             </a>
-            <a href="/about" className="hover:text-gray-300">
+            <a href="#" className="hover:text-gray-300">
               About
             </a>
-            <a href="/contact" className="hover:text-gray-300">
+            <a href="#" className="hover:text-gray-300">
               Contact
             </a>
           </div>
@@ -90,10 +72,11 @@ export default function Home() {
               Academic Interests and Strengths:
             </p>
             <p className="text-gray-1000 mb-4 text-sm">
-              A student's intended major and academic profile are the primary
-              factors in determining which colleges to apply to. This can have a
-              significant impact on the student's academic success and overall
-              college experience.
+              A student&apos;s intended major and academic profile are the
+              primary A students intended major and academic profile are the
+              primary factors in determining which colleges to apply to. This
+              can have a significant impact on the student's academic success
+              and overall college experience.
             </p>
 
             <p className="text-sm text-gray-600">Enter your GPA</p>
