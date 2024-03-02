@@ -36,6 +36,8 @@ export default function Home() {
   const { data } = api.essays.getAll.useQuery();
   const user = useUser();
 
+  console.log(user);
+
   return (
     <>
       <Head>
