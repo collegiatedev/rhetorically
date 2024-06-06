@@ -2,8 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
+  provider     = "postgresql"
+  url          = env("POSTGRES_URL")
   relationMode = "prisma"
 }
 
@@ -11,13 +11,31 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Essay {
-    id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    content String @db.VarChar(5000)
-    authorId String
+// model Essay {
+//     id        String   @id @default(cuid())
+//     createdAt DateTime @default(now())
+//     updatedAt DateTime @updatedAt
+//     content String @db.VarChar(5000)
+//     authorId String
 
-    @@index([authorId])
+//     @@index([authorId])
+// }
+
+model StudentProfile {
+  id                   String   @id @default(cuid())
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  gpa                  Float
+  intendedMajor        String
+  academicProgram      String
+  curriculumRanking    Int
+  studyAbroadRanking   Int
+  graduateSchoolRanking Int
+  academicSupportRanking Int
+  userId               String
+
+  @@index([userId])
+
+
 }
 
